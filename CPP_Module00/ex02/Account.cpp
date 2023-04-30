@@ -6,7 +6,7 @@
 /*   By: rstride <rstride@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 16:20:19 by rstride           #+#    #+#             */
-/*   Updated: 2023/04/30 16:32:57 by rstride          ###   ########.fr       */
+/*   Updated: 2023/04/30 17:59:28 by rstride          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -44,7 +44,6 @@ int	Account::getTotalAmount( void )
 {
     return (_totalAmount);
 }
-
 
 int	Account::getNbDeposits( void )
 {

@@ -6,7 +6,7 @@
 /*   By: rstride <rstride@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:56:38 by rstride           #+#    #+#             */
-/*   Updated: 2023/04/30 16:35:09 by rstride          ###   ########.fr       */
+/*   Updated: 2023/04/30 17:56:07 by rstride          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -38,9 +38,6 @@ void Contact::print_contact() const
 PhoneBook::PhoneBook() : contact_count(0) {
 }
 
-PhoneBook::~PhoneBook() {
-}
-
 void PhoneBook::add_contact() 
 {
     if (contact_count < 8) 
@@ -68,13 +65,29 @@ void PhoneBook::search_contact() const
 
     int index;
     std::cout << "Enter the index of the contact: ";
-    std::cin >> index;
-    std::cin.ignore();
-
-    if (index >= 0 && index < contact_count)
-        contacts[index].print_contact();
+    
+    if (std::cin >> index) 
+    {
+        std::cin.ignore();
+        if (index >= 0 && index < contact_count && index < 8)
+        {
+            contacts[index].print_contact();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        else
+        {
+            std::cout << "Invalid index" << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
     else
-        std::cout << "Invalid index" << std::endl;
+    {
+        std::cout << "Invalid input" << std::endl;
+        std::cin.clear(); 
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+    
 }
 
 void PhoneBook::execute_command(const std::string &command) 

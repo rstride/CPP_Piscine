@@ -6,7 +6,7 @@
 /*   By: rstride <rstride@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:56:41 by rstride           #+#    #+#             */
-/*   Updated: 2023/04/30 16:35:35 by rstride          ###   ########.fr       */
+/*   Updated: 2023/04/30 17:26:29 by rstride          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -17,6 +17,7 @@
 # include <iomanip>
 # include <string>
 # include <cstdlib>
+# include <limits>
 
 # define MAX_CONTACTS 8
 
@@ -37,7 +38,6 @@ class PhoneBook
 {
 public:
     PhoneBook();
-    ~PhoneBook();
     void add_contact();
     void search_contact() const;
     void execute_command(const std::string &command);
