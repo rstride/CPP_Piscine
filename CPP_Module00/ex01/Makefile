@@ -6,14 +6,14 @@
 #    By: rstride <rstride@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 16:22:34 by rstride           #+#    #+#              #
-#    Updated: 2023/04/30 15:56:32 by rstride          ###   ########.fr        #
+#    Updated: 2023/04/30 15:56:25 by rstride          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 CC		=	c++
 
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
-NAME	=	megaphone
+NAME	=	phonebook
 
 DEF_COLOR	=	\033[0;39m
 ORANGE		=	\033[0;33m
@@ -28,7 +28,7 @@ WHITE		=	\033[0;97m
 
 OBJ_PATH = obj/
 
-SRCS    =   megaphone.cpp
+SRCS    =   phonebook.cpp
 OBJ     =   $(SRCS:.cpp=.o)
 OBJS    =   $(addprefix $(OBJ_PATH), $(OBJ))
 INCS    =   -I ./inc/
@@ -43,7 +43,7 @@ $(OBJ_PATH):
 	mkdir $(OBJ_PATH)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) 
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ_PATH)
