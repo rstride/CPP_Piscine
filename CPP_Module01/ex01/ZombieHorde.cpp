@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/30 19:13:28 by rstride           #+#    #+#             */
-/*   Updated: 2023/05/26 16:08:09 by rstride          ###   ########.fr       */
+/*   Created: 2023/05/26 16:03:26 by rstride           #+#    #+#             */
+/*   Updated: 2023/05/26 16:03:36 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Fixed.hpp"
+#include "Zombie.hpp"
 
-int	main(void)
+Zombie* zombieHorde( int N, std::string name )
 {
-	Fixed a;
-	Fixed b(a);
-	Fixed c;
+	if (N <= 0)
+		return (NULL);
+		
+	Zombie *zombie_horde = new Zombie[N];
 
-	c = b;
-
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-
-	return (0);
+	for (int i=0; i<N; i++)
+	{
+		zombie_horde[i].set_name(name);
+	}
+	return (zombie_horde);
 }
