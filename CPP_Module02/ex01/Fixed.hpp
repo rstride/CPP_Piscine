@@ -1,41 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/31 12:38:41 by rstride           #+#    #+#             */
-/*   Updated: 2023/05/31 12:39:49 by rstride          ###   ########.fr       */
+/*   Created: 2023/05/31 13:41:38 by rstride           #+#    #+#             */
+/*   Updated: 2023/05/31 13:42:40 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_H
-#define HARL_H
-
+#ifndef FIXED_H
+#define FIXED_H
 #include <iostream>
-#include <map>
-#include <string>
+#include <cmath>
 
-
-class Harl{
-	typedef struct status
-	{
-		std::string name;
-		void(Harl::*ptr)(void);
-	}	t_status;
+class Fixed{
 public:
-	void complain(std::string _level);
-	Harl(void);
-	void etc(void);
+	Fixed();
+    
+	Fixed(const int num);
+
+	Fixed(const float num);
+
+	~Fixed();
+	Fixed(Fixed const &fixed);
+
+
+	Fixed &operator=(const Fixed &ref);
+
+	int getRawBits(void) const;
+
+	void setRawBits(const int raw);
+
+	float toFloat(void) const;
+
+	int toInt(void) const;
+
+
 
 private:
-	t_status stat[4];
-	void debug(void);
-	void info(void);
-	void warning(void);
-	void error(void);
-	void init(void);
+	int value;
+
+	 const static int bitCount = 8;
+
 };
+
+std::ostream& operator<<(std::ostream &outputStream, const Fixed &ref);
+
 
 #endif

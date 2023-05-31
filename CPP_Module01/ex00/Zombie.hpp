@@ -6,7 +6,7 @@
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 16:00:17 by rstride           #+#    #+#             */
-/*   Updated: 2023/05/26 16:00:28 by rstride          ###   ########.fr       */
+/*   Updated: 2023/05/31 12:33:20 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class Zombie
 		~Zombie(void);
 
 	private:
-	// zombie 이름
 		std::string name_;
 };
 

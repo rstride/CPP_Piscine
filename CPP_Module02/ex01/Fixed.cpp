@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 16:08:41 by rstride           #+#    #+#             */
-/*   Updated: 2023/05/31 13:39:23 by rstride          ###   ########.fr       */
+/*   Created: 2023/05/31 13:41:18 by rstride           #+#    #+#             */
+/*   Updated: 2023/05/31 13:41:33 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,25 @@
 Fixed::Fixed(void)
 {
 	std::cout << "Default constructor called" << std::endl;
-	fixedNum = 0;
+	value = 0;
+}
+
+Fixed::Fixed(int num)
+{
+	std::cout << "Int constructor called" << std::endl;
+	value = num << bitCount;
+}
+
+Fixed::Fixed(const float num)
+{
+	std::cout << "Float constructor called" << std::endl;
+	value = roundf(num * (1 << Fixed::bitCount));
+}
+
+Fixed::Fixed(Fixed const &ref)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = ref;
 }
 
 Fixed::~Fixed(void)
@@ -23,27 +41,37 @@ Fixed::~Fixed(void)
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed& fixed)
+Fixed &Fixed::operator=(const Fixed &ref)
 {
-	std::cout << "Copy constructor called" << std::endl;
-	fixedNum = fixed.fixedNum;
-}
-
-Fixed Fixed::operator=(Fixed &ref)
-{
-	std::cout << "Default constructor called" << std::endl;
-	this->fixedNum = ref.fixedNum;
-	return *this;
+	std::cout << "Assignation operator called" << std::endl;
+	value = ref.value;
+	return (*this);
 }
 
 int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (fixedNum);
+	return (value);
 }
 
 void Fixed::setRawBits(int const raw)
 {
 	std::cout << "Default constructor called" << std::endl;
-	fixedNum = raw;
+	value = raw;
+}
+
+float Fixed::toFloat(void) const
+{
+	return ((float)(this->value / (float)(1 << bitCount)));
+}
+
+int Fixed::toInt(void) const
+{
+	return (this->value >> bitCount);
+}
+
+std::ostream &operator<<(std::ostream &out, Fixed const &value)
+{
+	out << value.toFloat();
+	return (out);
 }
