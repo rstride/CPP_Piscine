@@ -1,19 +1,19 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rstride <rstride@student.42.fr>            +#+  +:+       +#+         #
+#    By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 16:22:34 by rstride           #+#    #+#              #
-#    Updated: 2023/04/30 17:23:18 by rstride          ###   ########.fr        #
+#    Updated: 2023/06/06 10:20:11 by rstride          ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 CC		=	c++
 
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
-NAME	=	Account
+NAME	=	Animal
 
 DEF_COLOR	=	\033[0;39m
 ORANGE		=	\033[0;33m
@@ -28,8 +28,12 @@ WHITE		=	\033[0;97m
 
 OBJ_PATH = obj/
 
-SRCS    =   Account.cpp \
-			tests.cpp
+SRCS    =   main.cpp \
+			Animal.cpp \
+			Dog.cpp \
+			Cat.cpp \
+			WrongAnimal.cpp \
+			WrongCat.cpp
 OBJ     =   $(SRCS:.cpp=.o)
 OBJS    =   $(addprefix $(OBJ_PATH), $(OBJ))
 INCS    =   -I ./inc/
