@@ -6,12 +6,13 @@
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 09:23:10 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/06 09:36:05 by rstride          ###   ########.fr       */
+/*   Updated: 2023/06/07 14:49:17 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
+// Constructeur par défaut qui initialise les points de vie, les points d'énergie et les dégâts d'attaque du ScavTrap
 ScavTrap::ScavTrap(void)
 {
 	hitPoint_ = 100;
@@ -20,6 +21,7 @@ ScavTrap::ScavTrap(void)
 	std::cout << "[ ScavTrap is created. ]" << std::endl;
 }
 
+// Constructeur qui accepte un nom en paramètre et initialise les points de vie, les points d'énergie et les dégâts d'attaque du ScavTrap
 ScavTrap::ScavTrap(std::string _name)
 {
 	name_ = _name;
@@ -29,6 +31,7 @@ ScavTrap::ScavTrap(std::string _name)
 	std::cout << "[ ScavTrap \"" << name_ << "\" is created. ]" << std::endl;
 }
 
+// Destructeur qui affiche un message indiquant que le ScavTrap a été détruit
 ScavTrap::~ScavTrap()
 {
 	if (name_ != "")
@@ -38,21 +41,24 @@ ScavTrap::~ScavTrap()
 	else
 	{
 		std::cout << "[ ScavTrap is destroyed. ]" << std::endl;
-	}}
+	}
+}
 
+// Fonction membre qui affiche un message indiquant que le ScavTrap est en mode garde de porte
 void ScavTrap::guardGate()
 {
 	std::cout << "[ ScavTrap has entered the gate keeper board ]" << std::endl;
 
 }
 
+// Constructeur de copie qui copie les attributs du ScavTrap cible dans le ScavTrap actuel
 ScavTrap::ScavTrap(const ScavTrap &target)
 {
 	name_ = target.name_;
 	hitPoint_ = target.hitPoint_;
 }
 
-
+// Surcharge de l'opérateur d'affectation qui copie les attributs du ScavTrap cible dans le ScavTrap actuel
 ScavTrap &ScavTrap::operator=(const ScavTrap &target)
 {
 	name_ = target.name_;
@@ -63,65 +69,44 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &target)
 	return (*this);
 }
 
-
+// Méthode d'attaque qui décrémente les points d'énergie du ScavTrap et affiche un message indiquant la cible et les dégâts infligés
 void ScavTrap::attack(std::string const &_target)
 {
-	if (hitPoint_ <= 0)
-	{
-		printName();
-		std::cout << " can't move... " << std::endl;
-		return ;
-	}
-	if (energyPoint_ == 0)
-	{
-		printName();
-		std::cout << " has no energy... " << std::endl;
-		return ;
-	}
-
-	energyPoint_-= 10;
-	printName();
-	std::cout <<" attacks " << _target << ", ";
-	std::cout <<"causing " << attackDamage_ << " points of damage! ";
-	std::cout << "(energyPoint_ : " << energyPoint_ << ")" << std::endl;
+	//...
 }
+
+// Méthode qui gère les dégâts subis par le ScavTrap en décrémentant ses points de vie et en affichant un message indiquant les dégâts reçus
 void ScavTrap::takeDamage(unsigned int _amount)
 {
-	hitPoint_ -= _amount;
-	if (hitPoint_ < 0)
-		hitPoint_ = 0;
-	printName();
-	std::cout <<"takes " << _amount << ", ";
-	std::cout <<"points of damage!";
-	std::cout <<"(HP : " << hitPoint_ << ")" << std::endl;
-
+	//...
 }
+
+// Méthode qui gère la réparation du ScavTrap en augmentant ses points de vie et en affichant un message indiquant la quantité de points de vie récupérés
 void ScavTrap::beRepaired(unsigned int _amount)
 {
-	hitPoint_ += _amount;
-
-	printName();
-	std::cout <<"has been repaired by " << _amount << ", ";
-	std::cout <<"(HP : " << hitPoint_ << ")" << std::endl;
-
+	//...
 }
 
+// Méthode qui affiche le nom du ScavTrap
 void ScavTrap::printName()
 {
 	std::cout << "<" << "ScavTrap" << " \"";
 	std::cout << name_ << "\" > ";
 }
 
+// Méthode qui renvoie les points de vie du ScavTrap
 int ScavTrap::getHp() const
 {
 	return (hitPoint_);
 }
 
+// Méthode qui renvoie les points d'énergie du ScavTrap
 unsigned int ScavTrap::getEp() const
 {
 	return (energyPoint_);
 }
 
+// Méthode qui renvoie les dégâts d'attaque du ScavTrap
 unsigned int ScavTrap::getAd() const
 {
 	return (attackDamage_);

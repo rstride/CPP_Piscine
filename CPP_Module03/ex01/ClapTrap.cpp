@@ -6,13 +6,13 @@
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 09:18:21 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/06 11:21:46 by rstride          ###   ########.fr       */
+/*   Updated: 2023/06/07 15:08:25 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-
+// Constructeur par défaut qui initialise les attributs de ClapTrap
 ClapTrap::ClapTrap(void)
 {
 	hitPoint_ = 10;
@@ -21,6 +21,7 @@ ClapTrap::ClapTrap(void)
 	std::cout << "[ ClapTrap is created. ]" << std::endl;
 }
 
+// Constructeur qui accepte une chaîne de caractères en paramètre pour initialiser le nom de ClapTrap
 ClapTrap::ClapTrap(std::string _name)
 {
 	name_ = _name;
@@ -30,6 +31,7 @@ ClapTrap::ClapTrap(std::string _name)
 	std::cout << "[ ClapTrap \"" << name_ << "\" is created. ]" << std::endl;
 }
 
+// Destructeur
 ClapTrap::~ClapTrap()
 {
 	if (name_ != "")
@@ -42,13 +44,14 @@ ClapTrap::~ClapTrap()
 	}
 }
 
+// Constructeur de copie qui copie les attributs du ClapTrap cible dans le ClapTrap actuel
 ClapTrap::ClapTrap(const ClapTrap &target)
 {
 	name_ = target.name_;
 	hitPoint_ = target.hitPoint_;
 }
 
-
+// Surcharge de l'opérateur d'affectation qui copie les attributs du ClapTrap source dans le ClapTrap actuel
 ClapTrap &ClapTrap::operator=(const ClapTrap &target)
 {
 	name_ = target.name_;
@@ -59,7 +62,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &target)
 	return (*this);
 }
 
-
+// Méthode pour attaquer une cible
 void ClapTrap::attack(std::string const &_target)
 {
 	if (hitPoint_ <= 0)
@@ -82,6 +85,7 @@ void ClapTrap::attack(std::string const &_target)
 	std::cout << "(energyPoint_ : " << energyPoint_ << ")" << std::endl;
 }
 
+// Méthode pour prendre des dégâts
 void ClapTrap::takeDamage(unsigned int _amount)
 {
 	hitPoint_ -= _amount;
@@ -91,9 +95,9 @@ void ClapTrap::takeDamage(unsigned int _amount)
 	std::cout <<"takes " << _amount << ", ";
 	std::cout <<"points of damage!";
 	std::cout <<"(HP : " << hitPoint_ << ")" << std::endl;
-
 }
 
+// Méthode pour être réparé
 void ClapTrap::beRepaired(unsigned int _amount)
 {
 	hitPoint_ += _amount;
@@ -101,9 +105,9 @@ void ClapTrap::beRepaired(unsigned int _amount)
 	printName();
 	std::cout <<"has been repaired by " << _amount << ", ";
 	std::cout <<"(HP : " << hitPoint_ << ")" << std::endl;
-
 }
 
+// Méthode pour imprimer le nom du ClapTrap
 void ClapTrap::printName()
 {
 	std::cout << "<" << "ClapTrap" << " \"";

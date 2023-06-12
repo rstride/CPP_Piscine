@@ -6,13 +6,12 @@
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 09:18:21 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/06 10:00:54 by rstride          ###   ########.fr       */
+/*   Updated: 2023/06/07 15:09:18 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-//  생성자
 ClapTrap::ClapTrap(void)
 {
 	hitPoint_ = 10;
@@ -30,7 +29,6 @@ ClapTrap::ClapTrap(std::string _name)
 	std::cout << "[ ClapTrap \"" << name_ << "\" is created. ]" << std::endl;
 }
 
-// 소멸자
 ClapTrap::~ClapTrap()
 {
 	if (name_ != "")
@@ -43,15 +41,12 @@ ClapTrap::~ClapTrap()
 	}
 }
 
-// 복사 생성자
 ClapTrap::ClapTrap(const ClapTrap &target)
 {
 	name_ = target.name_;
 	hitPoint_ = target.hitPoint_;
 }
 
-
-// 할당 연산자 오버로딩 (깊은 복사 / 사실 이걸 굳이 하지 안하도 디폴트 대입 연산인 된다)
 ClapTrap &ClapTrap::operator=(const ClapTrap &target)
 {
 	name_ = target.name_;
@@ -62,8 +57,6 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &target)
 	return (*this);
 }
 
-
-// 함수
 void ClapTrap::attack(std::string const &_target)
 {
 	if (hitPoint_ <= 0)

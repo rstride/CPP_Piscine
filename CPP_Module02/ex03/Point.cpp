@@ -6,63 +6,53 @@
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:13:10 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/06 12:13:11 by rstride          ###   ########.fr       */
+/*   Updated: 2023/06/07 15:05:48 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-// Constructors
+// Constructeur par défaut qui initialise _x et _y à 0
 Point::Point(): _x(0), _y(0)
 {
-	// std::cout << "Point Default Constructor called" << std::endl;
 }
 
+// Constructeur qui accepte deux flottants en paramètre pour initialiser _x et _y
 Point::Point(const float x, const float y):_x(x), _y(y)
 {
-	// std::cout << "Constuctor called" << std::endl;
 }
 
+// Constructeur de copie qui copie les attributs du point cible dans le point actuel
 Point::Point(const Point &copy): _x(copy.getX()), _y(copy.getY())
 {
-	// std::cout << "Point Copy Constructor called" << std::endl;
-	// *this = copy;
 }
 
-// Deconstructors
+// Destructeur
 Point::~Point()
 {
-	// std::cout << "Point Deconstructor called" << std::endl;
 }
 
-// Overloaded Operators
+// Surcharge de l'opérateur d'affectation qui copie les attributs du point source dans le point actuel
 Point &Point::operator=(const Point &src)
 {
-	// std::cout << "Point Assignation operator called" << std::endl;
 	if (this == &src)
 		return *this;
-
-	/*CODE*/
 	return *this;
 }
 
-// Public Methods
-
-// Getter
+// Méthode qui renvoie la coordonnée x du point
 const Fixed	&Point::getX(void)const
 {
 	return (this->_x);
 }
 
+// Méthode qui renvoie la coordonnée y du point
 const Fixed	&Point::getY(void)const
 {
 	return (this->_y);
 }
 
-// Setter
-
-
-// Overload for ostream
+// Surcharge de l'opérateur << pour afficher les coordonnées x et y du point
 std::ostream	&operator<<(std::ostream &o, Point const point)
 {
 	o << "_x: " << point.getX() << " / _y: " << point.getY() << std::endl;
