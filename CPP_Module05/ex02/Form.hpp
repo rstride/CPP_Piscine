@@ -6,7 +6,7 @@
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 13:06:39 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/12 13:13:26 by rstride          ###   ########.fr       */
+/*   Updated: 2023/06/20 20:03:02 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ public:
     int getGradeSign() const;
     int getGradeExec() const;
     void beSigned(Bureaucrat &target);
+    virtual void execute(Bureaucrat const &executor) const = 0;
 
     class GradeTooHighException : public std::exception
     {

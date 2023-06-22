@@ -6,7 +6,7 @@
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 12:47:46 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/12 13:13:52 by rstride          ###   ########.fr       */
+/*   Updated: 2023/06/22 21:52:44 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,4 @@ public:
     };
 };
 
-std::ostream& operator<< (std::ostream &out, const Bureaucrat &target);
+std::ostream 

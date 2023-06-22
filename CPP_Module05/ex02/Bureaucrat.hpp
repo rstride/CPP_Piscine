@@ -6,7 +6,7 @@
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 12:47:46 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/12 13:13:52 by rstride          ###   ########.fr       */
+/*   Updated: 2023/06/20 20:08:21 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ public:
     void incrementGrade();
     void decrementGrade();
     void signForm(Form &form);
+    void executeForm(Form const &form);
 
     class GradeTooHighException : public std::exception
     {

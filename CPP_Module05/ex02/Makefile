@@ -6,7 +6,7 @@
 #    By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 16:22:34 by rstride           #+#    #+#              #
-#    Updated: 2023/06/12 12:54:30 by rstride          ###   ########.fr        #
+#    Updated: 2023/06/20 20:08:37 by rstride          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,7 @@ SRCS    =   main.cpp \
 			Form.cpp \
 			ShrubberyCreationForm.cpp \
 			RobotomyRequestForm.cpp \
-			PresidentialPardonForm.cpp \
-			Intern.cpp
+			PresidentialPardonForm.cpp 
 OBJ     =   $(SRCS:.cpp=.o)
 OBJS    =   $(addprefix $(OBJ_PATH), $(OBJ))
 INCS    =   -I ./inc/

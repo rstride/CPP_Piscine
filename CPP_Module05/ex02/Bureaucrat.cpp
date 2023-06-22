@@ -6,7 +6,7 @@
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 12:47:42 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/12 13:16:56 by rstride          ###   ########.fr       */
+/*   Updated: 2023/06/20 20:08:16 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,3 +104,13 @@ void Bureaucrat::signForm(Form &form) {
         std::cout << this->getName() << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
     }
 }
+
+void Bureaucrat::executeForm(Form const &form) {
+    try {
+        form.execute(*this);
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
+    } catch (std::exception &e) {
+        std::cout << this->getName() << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
+    }
+}
+
