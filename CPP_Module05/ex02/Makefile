@@ -5,29 +5,33 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
+<<<<<<< HEAD
+#    Created: 2023/06/26 14:51:02 by rstride           #+#    #+#              #
+#    Updated: 2023/06/26 14:52:21 by rstride          ###   ########.fr        #
+=======
 #    Created: 2023/04/03 16:22:34 by rstride           #+#    #+#              #
 #    Updated: 2023/06/20 20:08:37 by rstride          ###   ########.fr        #
+>>>>>>> refs/remotes/origin/main
 #                                                                              #
 # **************************************************************************** #
 
-CC		=	c++
+SRCS = ./Bureaucrat.cpp \
+	./Form.cpp \
+	./PresidentPardonForm.cpp \
+	./RobotomyRequestForm.cpp \
+	./ShrubberyCreationForm.cpp \
+	./main.cpp
 
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98
-NAME	=	Bureaucrat
+CC = c++
+NAME = Forms
 
-DEF_COLOR	=	\033[0;39m
-ORANGE		=	\033[0;33m
-GRAY		=	\033[0;90m
-RED			=	\033[0;91m
-GREEN		=	\033[1;92m
-YELLOW		=	\033[1;93m
-BLUE		=	\033[0;94m
-MAGENTA		=	\033[0;95m
-CYAN		=	\033[0;96m
-WHITE		=	\033[0;97m
+CFLANG = -Wall -Wextra -Werror -std=c++98
+OBJS = $(SRCS:.cpp=.o)
 
-OBJ_PATH = obj/
 
+<<<<<<< HEAD
+all: $(NAME)
+=======
 SRCS    =   main.cpp \
 			Bureaucrat.cpp \
 			Form.cpp \
@@ -46,18 +50,17 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
 
 $(OBJ_PATH):
 	mkdir $(OBJ_PATH)
+>>>>>>> refs/remotes/origin/main
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAG) -o $(NAME) $(OBJS)
 
 clean:
-	rm -rf $(OBJ_PATH)
-	@echo "$(MAGENTA)Deleting:$(DEF_COLOR) $(OBJS)"
+	rm -f $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
-	@echo "$(RED)Deleting:$(DEF_COLOR) $(NAME)"
+	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re

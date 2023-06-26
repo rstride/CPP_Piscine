@@ -5,106 +5,125 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
+/*   Created: 2023/06/15 18:48:48 by rstride           #+#    #+#             */
+/*   Updated: 2023/06/26 14:40:54 by rstride          ###   ########.fr       */
+=======
 /*   Created: 2023/06/12 12:47:42 by rstride           #+#    #+#             */
 /*   Updated: 2023/06/20 20:08:16 by rstride          ###   ########.fr       */
+>>>>>>> refs/remotes/origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-// Constructeur par défaut qui initialise le nom du bureaucrate à "none" et son grade à 150
-Bureaucrat::Bureaucrat() : name_("none"), grade_(150)
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
+	return ("[Grade Too High Exception]\nGrade 1 is the highest grade, so you can't raise your grade any more.");
 }
 
-// Constructeur avec paramètres qui initialise le nom et le grade du bureaucrate.
-// S'il est hors de portée (c'est-à-dire en dehors de 1-150), il lance une exception appropriée.
-Bureaucrat::Bureaucrat(const std::string name, int grade) : name_(name)
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-    if (grade < 1)
-        throw Bureaucrat::GradeTooHighException();
-    else if (grade > 150)
-        throw Bureaucrat::GradeTooLowException();
-    else
-        grade_ = grade;
+	return ("[Grade Too Low Exception]\nThe grade 150 is the lowest, so you can't lower the grade any more.");
 }
 
-// Destructeur par défaut
+Bureaucrat::Bureaucrat()
+{
+	grade_ = 0;
+}
+
+Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name_(_name), grade_(_grade)
+{
+	if (_grade < 1)
+		throw GradeTooHighException();
+
+	else if (_grade > 150)
+		throw GradeTooLowException();
+}
+
+
 Bureaucrat::~Bureaucrat()
 {
 }
 
-// Constructeur de copie qui copie le nom et le grade de la cible dans l'objet Bureaucrat en cours de construction
 Bureaucrat::Bureaucrat(const Bureaucrat &target) : name_(target.name_)
 {
-    grade_ = target.grade_;
+	grade_ = target.grade_;
 }
 
-// Surcharge de l'opérateur d'affectation qui copie le grade de la cible dans l'objet Bureaucrat en cours de modification
-Bureaucrat& Bureaucrat::operator= (const Bureaucrat &target)
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &target)
 {
-    grade_ = target.grade_;
-    return (*this);
+	grade_ = target.grade_;
+	return(*this);
 }
 
-// Retourne le nom du Bureaucrat
 std::string Bureaucrat::getName() const
 {
-    return (name_);
+	return (name_);
 }
 
-// Retourne le grade du Bureaucrat
-int Bureaucrat::getGrade() const
+unsigned Bureaucrat::getGrade() const
 {
-    return (grade_);
+	return (grade_);
 }
 
-// Augmente le grade du Bureaucrat d'une unité. Si cela fait descendre le grade en dessous de 1, une exception est lancée.
-void Bureaucrat::incrementGrade()
+void Bureaucrat::setIncreaseGrade()
 {
-    if (grade_ - 1 < 1)
-        throw Bureaucrat::GradeTooHighException();
-    else
-        grade_--;
+	if (grade_ > 1)
+		grade_--;
+	else if (grade_ == 1)
+		throw GradeTooHighException();
 }
 
-// Diminue le grade du Bureaucrat d'une unité. Si cela fait monter le grade au-dessus de 150, une exception est lancée.
-void Bureaucrat::decrementGrade()
+void Bureaucrat::setDecreaseGrade()
 {
-    if (grade_ + 1 > 150)
-        throw Bureaucrat::GradeTooLowException();
-    else
-        grade_++;
-}
-
-// Renvoie une chaîne indiquant que le grade est trop élevé
-const char* Bureaucrat::GradeTooHighException::what() const throw()
-{
-    return ("Grade too high");
-}
-
-// Renvoie une chaîne indiquant que le grade est trop bas
-const char* Bureaucrat::GradeTooLowException::what() const throw()
-{
-    return ("Grade too low");
-}
-
-// Surcharge de l'opérateur << pour imprimer le nom et le grade du Bureaucrat
-std::ostream& operator<< (std::ostream &out, const Bureaucrat &target)
-{
-    out << target.getName() << ", bureaucrat grade " << target.getGrade() << std::endl;
-    return (out);
+	if (grade_ < 150)
+		grade_++;
+	else if (grade_ == 150)
+		throw GradeTooLowException();
 }
 
 void Bureaucrat::signForm(Form &form) {
-    try {
-        form.beSigned(*this);
-        std::cout << this->getName() << " signs " << form.getName() << std::endl;
-    } catch (std::exception &e) {
-        std::cout << this->getName() << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
-    }
+
+	if (form.getIsSigned() == 1)
+	{
+		std::cout << name_ << " signs " << form.getFormName() << std::endl;
+	}
+	else
+	{
+		std::cout << name_ << " cannot sign " << form.getFormName() << " because ";
+
+		if (grade_ > form.getExecuteGrade() && grade_ > form.getRequiredGrade())
+			std::cout << "all grade is low.";
+		else if (grade_ > form.getExecuteGrade())
+			std::cout << "execute grade is low.";
+		else if (grade_ > form.getRequiredGrade())
+			std::cout << "required grade is low.";
+		else
+			std::cout << name_ << " didn't receive the payment.";
+		std::cout << std::endl;
+	}
 }
 
+<<<<<<< HEAD
+void Bureaucrat::executeForm(Form const &form)
+{
+	if (grade_ >= form.getExecuteGrade())
+	{
+		std::cout << name_ << " cannot sign " << form.getFormName() << " because ";
+		std::cout << "execute grade is low.";
+	}
+	else
+	{
+		std::cout << name_ << " executes " << form.getFormName() << std::endl;
+	}
+}
+
+std::ostream& operator<<(std::ostream &outputStream, const Bureaucrat &ref)
+{
+	outputStream << ref.getName() << ", grade : " << ref.getGrade();
+	return (outputStream);
+=======
 void Bureaucrat::executeForm(Form const &form) {
     try {
         form.execute(*this);
@@ -112,5 +131,6 @@ void Bureaucrat::executeForm(Form const &form) {
     } catch (std::exception &e) {
         std::cout << this->getName() << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
     }
+>>>>>>> refs/remotes/origin/main
 }
 

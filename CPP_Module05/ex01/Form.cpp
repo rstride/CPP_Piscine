@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
+/*   By: rstride<rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 13:06:36 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/12 13:14:21 by rstride          ###   ########.fr       */
+/*   Created: 2023/06/12 13:06:36 by rstride          #+#    #+#             */
+/*   Updated: 2023/06/12 13:14:21 by rstride         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

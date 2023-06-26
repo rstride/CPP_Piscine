@@ -1,59 +1,35 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rstride <rstride@student.42.fr>            +#+  +:+       +#+         #
+#    By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/03 16:22:34 by rstride           #+#    #+#              #
-#    Updated: 2023/04/30 17:23:18 by rstride          ###   ########.fr        #
+#    Created: 2023/06/26 14:51:41 by rstride           #+#    #+#              #
+#    Updated: 2023/06/26 14:51:42 by rstride          ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
-CC		=	c++
+SRCS = ./main.cpp
 
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98
-NAME	=	Account
+CC = c++
+NAME = Serialization
 
-DEF_COLOR	=	\033[0;39m
-ORANGE		=	\033[0;33m
-GRAY		=	\033[0;90m
-RED			=	\033[0;91m
-GREEN		=	\033[1;92m
-YELLOW		=	\033[1;93m
-BLUE		=	\033[0;94m
-MAGENTA		=	\033[0;95m
-CYAN		=	\033[0;96m
-WHITE		=	\033[0;97m
+CFLANG = -Wall -Wextra -Werror -std=c++98
+OBJS = $(SRCS:.cpp=.o)
 
-OBJ_PATH = obj/
 
-SRCS    =   Account.cpp \
-			tests.cpp
-OBJ     =   $(SRCS:.cpp=.o)
-OBJS    =   $(addprefix $(OBJ_PATH), $(OBJ))
-INCS    =   -I ./inc/
-
-all: $(OBJ_PATH) $(NAME) 
-
-$(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCS) 
-	@echo "$(GREEN)Compiling:$(DEF_COLOR) $<"
-
-$(OBJ_PATH):
-	mkdir $(OBJ_PATH)
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAG) -o $(NAME) $(OBJS)
 
 clean:
-	rm -rf $(OBJ_PATH)
-	@echo "$(MAGENTA)Deleting:$(DEF_COLOR) $(OBJS)"
+	rm -f $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
-	@echo "$(RED)Deleting:$(DEF_COLOR) $(NAME)"
+	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re

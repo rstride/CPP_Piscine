@@ -3,10 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
+/*   By: rstride<rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
+/*   Created: 2023/06/12 12:47:46 by rstride          #+#    #+#             */
+/*   Updated: 2023/06/12 13:13:52 by rstride         ###   ########.fr       */
+=======
 /*   Created: 2023/06/12 12:47:46 by rstride           #+#    #+#             */
 /*   Updated: 2023/06/22 21:52:44 by rstride          ###   ########.fr       */
+>>>>>>> refs/remotes/origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
