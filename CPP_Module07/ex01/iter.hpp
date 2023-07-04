@@ -6,7 +6,7 @@
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 22:36:26 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/26 14:42:20 by rstride          ###   ########.fr       */
+/*   Updated: 2023/07/04 17:52:58 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ void print(T target)
 {
 	std::cout << target << std::endl;
 }
-#endif

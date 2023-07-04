@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scalarConversion.hpp                               :+:      :+:    :+:   */
+/*   scalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 02:22:24 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/25 23:59:44 by rstride          ###   ########.fr       */
+/*   Updated: 2023/07/04 18:19:43 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <cmath>
 #include <limits>
 #include <cfloat>
+#include <climits>
+#include <math.h>
 
 class scalarConverter
 {
@@ -40,6 +42,3 @@ private:
 	double value_;
 	bool isImpossible_;
 };
-
-
-#endif

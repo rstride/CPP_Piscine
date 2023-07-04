@@ -6,7 +6,7 @@
 /*   By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 02:22:31 by rstride           #+#    #+#             */
-/*   Updated: 2023/06/26 14:41:27 by rstride          ###   ########.fr       */
+/*   Updated: 2023/07/04 18:07:34 by rstride          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,4 @@ int main(int argc, char **argv)
 	
 	return (0);
 }
+
