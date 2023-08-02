@@ -6,30 +6,54 @@
 #    By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 00:03:04 by rstride           #+#    #+#              #
-#    Updated: 2023/06/26 00:03:05 by rstride          ###   ########.fr        #
+#    Updated: 2023/08/02 12:02:11 by rstride          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Macro Variables 
-CXXFLANGS = -Wall -Wextra -Werror -std=c++98
-CXX=c++ $(CXXFLANGS)
+CC		=	c++
 
-# Custom Variables
-SRCS = ./main.cpp
-OBJS = $(SRCS:.cpp=.o)
-NAME = Easyfind
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98
+NAME	=	BitcoinExchange
 
-all: $(NAME)
+DEF_COLOR	=	\033[0;39m
+ORANGE		=	\033[0;33m
+GRAY		=	\033[0;90m
+RED			=	\033[0;91m
+GREEN		=	\033[1;92m
+YELLOW		=	\033[1;93m
+BLUE		=	\033[0;94m
+MAGENTA		=	\033[0;95m
+CYAN		=	\033[0;96m
+WHITE		=	\033[0;97m
+
+OBJ_PATH = obj/
+
+SRCS    =   main.cpp \
+			BitcoinExchange.cpp 
+OBJ     =   $(SRCS:.cpp=.o)
+OBJS    =   $(addprefix $(OBJ_PATH), $(OBJ))
+INCS    =   -I ./inc/
+
+all: $(OBJ_PATH) $(NAME) 
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCS) 
+	@echo "$(GREEN)Compiling:$(DEF_COLOR) $<"
+
+$(OBJ_PATH):
+	mkdir $(OBJ_PATH)
 
 $(NAME): $(OBJS)
-	$(CXX) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ_PATH)
+	@echo "$(MAGENTA)Deleting:$(DEF_COLOR) $(OBJS)"
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
+	@echo "$(RED)Deleting:$(DEF_COLOR) $(NAME)"
 
 re: fclean all
-	
-.PHONY: all clean fclean re
+
+.PHONY: all clean fclean re 

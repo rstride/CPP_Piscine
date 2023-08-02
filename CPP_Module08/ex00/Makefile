@@ -6,7 +6,7 @@
 #    By: rstride <rstride@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 00:03:02 by rstride           #+#    #+#              #
-#    Updated: 2023/06/26 00:03:03 by rstride          ###   ########.fr        #
+#    Updated: 2023/08/02 11:59:00 by rstride          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CXXFLANGS = -Wall -Wextra -Werror -std=c++98
 CXX=c++ $(CXXFLANGS)
 
 # Custom Variables
-SRCS = ./main.cpp
+SRCS = ./main.cpp 
 OBJS = $(SRCS:.cpp=.o)
 NAME = Easyfind
 
